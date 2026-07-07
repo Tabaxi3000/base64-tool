@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "b64tool"
+version = "0.1.0"
+description = "Multi-format encoding/decoding CLI with recursive layer detection"
+requires-python = ">=3.12"
+dependencies = [
+    "rich",
+    "typer",
+]
+
+[project.optional-dependencies]
+dev = [
+    "hypothesis>=6.130.0,<7.0.0",
+    "mypy>=1.19.1,<2.0.0",
+    "pre-commit>=4.5.1,<5.0.0",
+    "pylint>=4.0.4,<5.0.0",
+    "pytest>=9.0.2,<10.0.0",
+    "pytest-cov",
+    "ruff",
+]
+
+[project.scripts]
+b64tool = "base64_tool.cli:app"
+
+[tool.setuptools]
+package-dir = { base64_tool = "src" }
+packages = ["base64_tool"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
